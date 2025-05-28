@@ -741,6 +741,8 @@ else
         IMG2= uint16(abs(IMG2)*2^gain_level);
     elseif strmatch(info.Datatype,'int16')
         IMG2= int16(abs(IMG2)*2^gain_level);
+    elseif strmatch(info.Datatype,'double')
+        IMG2= double(abs(IMG2)*2^gain_level);
     else
         IMG2= single(abs(IMG2)*2^gain_level);
     end
