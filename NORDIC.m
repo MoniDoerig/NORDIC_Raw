@@ -69,7 +69,19 @@ end
 
 ARG.patch_scale=0;
 
-PP=dir(file_filter) % PP=dir('M*SORT2*mat');
+disp(file_filter)
+%PP=dir(file_filter) % PP=dir('M*SORT2*mat
+[folder,name,ext] = fileparts(file_filter);
+
+if isempty(ext)
+    ext = '.mat';
+end
+
+if isempty(folder)
+    PP = dir([name ext]);
+else
+    PP = dir(fullfile(folder, [name ext]));
+end
 filename=PP(file_idx).name;%filename2%[1:2]+2+2+2%size(PP,1)/2:-1:1;%:-1:size(PP,1)/2
 if sum(kernel_size)==0  % choose optimal kernel
 tmp=matfile(filename);
